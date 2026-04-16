@@ -358,10 +358,16 @@ Our structured 7-step methodology ensures rigorous, reproducible analysis:
 ## Best Practices Followed
 
 ✓ **Version Control:** All files committed to GitHub with clear commit messages
+
 ✓ **Reproducibility:** Complete documentation of data transformations & formulas
+
 ✓ **Code Quality:** Well-commented, modular Python code following PEP 8
+
 ✓ **Data Integrity:** Raw data never modified, clean separation of layers
-✓ **Professional Output:** Publication-ready Tableau dashboard & formal report
+
+✓ **Professional Output:** 
+Publication-ready Tableau dashboard & formal report
+
 ✓ **Team Collaboration:** Documented contributions & transparent decision-making  
 
 ---

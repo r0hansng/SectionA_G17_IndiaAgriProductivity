@@ -1,4 +1,4 @@
-# Data Dictionary Template
+# Data Dictionary
 
 Use this file to document every important field in your dataset. A strong data dictionary makes your cleaning decisions, KPI logic, and dashboard filters much easier to review.
 

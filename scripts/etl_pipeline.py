@@ -81,14 +81,16 @@ def basic_clean(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-def build_clean_dataset(input_path: Path) -> pd.DataFrame:
+def build_clean_dataset(input_path: Path | str) -> pd.DataFrame:
     """Read a raw CSV file and return a fully cleaned and validated DataFrame."""
+    input_path = Path(input_path)
     df = pd.read_csv(input_path)
     return basic_clean(df)
 
 
-def save_processed(df: pd.DataFrame, output_path: Path) -> None:
+def save_processed(df: pd.DataFrame, output_path: Path | str) -> None:
     """Write the cleaned DataFrame to disk, ensuring parent directories exist."""
+    output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     df.to_csv(output_path, index=False)
     

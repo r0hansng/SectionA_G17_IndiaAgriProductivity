@@ -1,130 +1,88 @@
-"""ETL Pipeline for India Agricultural Productivity Analysis.
+"""Simple ETL Pipeline for India Agricultural Productivity Dataset"""
 
-This module provides a robust, production-ready pipeline for ingesting raw 
-agricultural statistics and transforming them into a standard format suitable 
-for statistical modeling and dashboarding.
-"""
-
-from __future__ import annotations
-
+import pandas as pd
+import numpy as np
 import argparse
 import sys
 from pathlib import Path
 
-import pandas as pd
 
-
-def normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
-    """Standardize column headers to a clean snake_case format.
+def clean_data(df):
+    # ---------------- COLUMN CLEANING ---------------- #
+    df.columns = df.columns.str.strip().str.lower()
     
-    Normalizing headers early prevents join failures and ensures consistent 
-    attribute referencing throughout the analytical pipeline, especially when 
-    source data contains trailing spaces or inconsistent casing.
-    """
-    df.columns = df.columns.astype(str).str.strip()
+    if "crop_year" in df.columns:
+        df = df.rename(columns={"crop_year": "year"})
     
-    cleaned = (
-        df.columns.str.lower()
-        .str.replace(r"[^a-z0-9]+", "_", regex=True)
-        .str.strip("_")
-    )
-    result = df.copy()
-    result.columns = cleaned
-    return result
+    required_cols = ["state", "district", "crop", "season", "area", "production", "year"]
+    for col in required_cols:
+        if col not in df.columns:
+            raise ValueError(f"Missing column: {col}")
 
-
-def basic_clean(df: pd.DataFrame) -> pd.DataFrame:
-    """Execute core cleaning transformations to ensure high-fidelity data.
-    
-    This process handles structural normalization, categorical stabilization, 
-    missing value imputation, and outlier neutralization using domain-specific rules.
-    """
-    # Structural and Categorical Normalization:
-    # Converting to snake_case simplifies downstream SQL-like operations, while 
-    # trimming categorical strings prevents grouping logic failures caused by 
-    # inconsistent padding in the raw survey data.
-    df = normalize_columns(df)
-    for col in df.select_dtypes(include=["object", "string"]).columns:
+    # ---------------- BASIC CLEANING ---------------- #
+    for col in ["state", "district", "crop", "season"]:
         df[col] = df[col].astype(str).str.strip()
-    
-    # Dataset Integrity and Missing Value Imputation:
-    # Records lacking a crop classification are non-recoverable and thus excluded.
-    # For production metrics, we use a multi-tiered median imputation strategy 
-    # (state-crop-season > crop-wide > global) to preserve local variances 
-    # without introducing the bias common in mean-based approaches.
-    df = df.dropna(subset=['crop'])
-    
-    def impute_production(group):
-        group['production'] = group['production'].fillna(group['production'].median())
-        return group
-    
-    if df['production'].isnull().any():
-        df = df.groupby(['state', 'crop', 'season'], group_keys=False).apply(impute_production)
-        df['production'] = df['production'].fillna(df.groupby('crop')['production'].transform('median'))
-        df['production'] = df['production'].fillna(df['production'].median())
 
-    # Metric Derivation and Outlier Stabilization:
-    # Recalculating Yield from ground-truth attributes (Production/Area) ensures 
-    # internal consistency. We then cap extreme values at the 99th percentile 
-    # to stabilize distributions and prevent data entry errors from skewing 
-    # regional benchmarks.
-    df['yield'] = df['production'] / df['area']
-    
-    yield_cap = df['yield'].quantile(0.99)
-    df['yield'] = df['yield'].clip(upper=yield_cap)
-    
-    # Final Deduplication:
-    # Eliminating duplicate records prevents inflation of aggregate production figures 
-    # across different levels of geographic analysis.
+    df = df.dropna(subset=["crop", "area", "production"])
+    df = df[(df["area"] > 0) & (df["production"] >= 0)]
+
+    df["season"] = df["season"].str.title()
+
+    # ---------------- REMOVE INCOMPLETE YEARS ---------------- #
+    year_counts = df["year"].value_counts()
+    threshold = 0.8 * year_counts.max()
+    valid_years = year_counts[year_counts >= threshold].index
+    df = df[df["year"].isin(valid_years)]
+
+    print("Valid years:", sorted(valid_years))
+
+    # ---------------- REMOVE COCONUT (UNIT ISSUE) ---------------- #
+    df = df[~df["crop"].str.lower().str.contains("coconut", na=False)]
+
+    # ---------------- YIELD CALCULATION ---------------- #
+    df["yield"] = df["production"] / df["area"]
+
+    df["yield"].replace([np.inf, -np.inf], np.nan, inplace=True)
+    df = df.dropna(subset=["yield"])
+
+    # ---------------- OUTLIER HANDLING ---------------- #
+    cap = df["yield"].quantile(0.99)
+    df["yield"] = df["yield"].clip(upper=cap)
+
+    # ---------------- FINAL CLEAN ---------------- #
     df = df.drop_duplicates().reset_index(drop=True)
-    
+
+    if df.empty:
+        raise ValueError("Dataset is empty after cleaning")
+
     return df
 
 
-def build_clean_dataset(input_path: Path | str) -> pd.DataFrame:
-    """Read a raw CSV file and return a fully cleaned and validated DataFrame."""
-    input_path = Path(input_path)
+def main():
+    parser = argparse.ArgumentParser(description="Run ETL pipeline")
+    parser.add_argument("--input", required=True, help="Input CSV path")
+    parser.add_argument("--output", required=True, help="Output CSV path")
+
+    args = parser.parse_args()
+
+    input_path = Path(args.input)
+    output_path = Path(args.output)
+
+    if not input_path.exists():
+        print("Input file not found")
+        sys.exit(1)
+
+    print("Reading data...")
     df = pd.read_csv(input_path)
-    return basic_clean(df)
 
+    print("Cleaning data...")
+    df = clean_data(df)
 
-def save_processed(df: pd.DataFrame, output_path: Path | str) -> None:
-    """Write the cleaned DataFrame to disk, ensuring parent directories exist."""
-    output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     df.to_csv(output_path, index=False)
-    
-    print(f"Processed dataset successfully persisted to: {output_path}")
-    print(f"Final Integrity Check: {len(df)} rows | {len(df.columns)} columns")
 
-
-def parse_args() -> argparse.Namespace:
-    """Handle command-line interface arguments for the ETL process."""
-    parser = argparse.ArgumentParser(description="Run the Capstone 2 ETL pipeline.")
-    parser.add_argument(
-        "--input",
-        required=True,
-        type=Path,
-        help="Path to the raw CSV file in data/raw/.",
-    )
-    parser.add_argument(
-        "--output",
-        required=True,
-        type=Path,
-        help="Path to the cleaned CSV file in data/processed/.",
-    )
-    return parser.parse_args()
-
-
-def main() -> None:
-    """Main execution entry point for the ETL pipeline."""
-    args = parse_args()
-    if not args.input.exists():
-        print(f"Error: Source file {args.input} not found.")
-        sys.exit(1)
-        
-    cleaned_df = build_clean_dataset(args.input)
-    save_processed(cleaned_df, args.output)
+    print("Saved cleaned data to:", output_path)
+    print("Final shape:", df.shape)
 
 
 if __name__ == "__main__":

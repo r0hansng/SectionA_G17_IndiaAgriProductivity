@@ -1,17 +1,14 @@
 # Tableau Dashboard Links
 
-Use this file to store the final public links for your Tableau deliverables.
+## Live Dashboard
 
-## Dashboard Details
+**Group 17 — Section A | India Agricultural Productivity (1997–2019)**
 
-| Item | Link | Notes |
-|---|---|---|
-| Tableau Public Dashboard | _Paste URL here_ | _Main submission link_ |
-| Workbook / Story Link | _Paste URL here if applicable_ | _Optional_ |
-| Demo Recording | _Paste URL here if applicable_ | _Optional_ |
+[View on Tableau Public](https://public.tableau.com/app/profile/pushpendra.parihar/viz/Group17_SectionA_Dashboard_Final/1ExecutiveSummary)
 
-## Screenshot Checklist
-
-- Add exported dashboard screenshots to `tableau/screenshots/`
-- Use clear file names such as `executive_view.png` and `regional_drilldown.png`
-- Make sure screenshots match the final public dashboard
+| Dashboard | Description |
+|---|---|
+| 1 — Executive Summary | National KPIs, production map, season breakdown |
+| 2 — Underperformance Analysis | Underperforming districts, production loss ranking |
+| 3 — Productivity Trends | Yield trends by season, long-term state efficiency gains |
+| 4 — Crop Portfolio | Crop share treemap, state yield rank, CAGR |

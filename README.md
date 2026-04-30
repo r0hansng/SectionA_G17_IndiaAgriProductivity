@@ -1,4 +1,4 @@
-<![CDATA[<div align="center">
+<div align="center">
 
 # 🌾 India Agricultural Productivity Intelligence
 
@@ -355,7 +355,6 @@ SectionA_G17_IndiaAgriProductivity/
 │
 ├── 📄 README.md                        # This file — project overview & documentation
 ├── 📄 requirements.txt                 # Python dependencies
-├── 📄 final_report.tex                 # Full LaTeX project report
 ├── 📄 LICENSE                          # MIT License
 ├── 📄 Makefile                         # Build automation
 │
@@ -380,18 +379,26 @@ SectionA_G17_IndiaAgriProductivity/
 │   └── screenshots/                    # Dashboard snapshots
 │
 ├── 📂 reports/
-│   ├── README.md
-│   ├── project_report_template.md      # Report template
-│   └── presentation_outline.md         # Viva/presentation guide
+│   ├── project_report.pdf              # Full technical project report
+│   └── presentation.pdf               # Final presentation deck
 │
 ├── 📂 docs/
 │   └── data_dictionary.md              # Column definitions & metadata
 │
-├── 📂 DVA-focused-Portfolio/           # Portfolio documentation
-│   └── README.md
+├── 📂 DVA-focused-Portfolio/           # Individual member portfolio write-ups
+│   ├── pushpendra-portfolio.md
+│   ├── rohan-portfolio.md
+│   ├── Ajeesh-DVA-Portfolio.md
+│   ├── Akshit-Vats_Portfolio.md
+│   ├── sameer-portfolio.md
+│   └── Sanath_portofolio.md
 │
-└── 📂 DVA-oriented-Resume/            # Resume with project highlights
-    └── README.md
+└── 📂 DVA-oriented-Resume/            # Individual member resumes
+    ├── Pushpendra_Resume.pdf
+    ├── Resume-Akshit vats.pdf
+    ├── Ajeesh Amreet - Resume.pdf
+    ├── Sameer_resume.pdf
+    └── sanath__waraikar_resume.pdf
 ```
 
 ---
@@ -433,10 +440,11 @@ SectionA_G17_IndiaAgriProductivity/
 
 ## 📄 Final Report
 
-The complete **10+ page technical project report** is available as a LaTeX document:
+The complete **technical project report** is available as a PDF:
 
-- **File:** [`final_report.tex`](final_report.tex)
+- **File:** [`reports/project_report.pdf`](reports/project_report.pdf)
 - **Contents:** Abstract, sector context, dataset description, ETL methodology, KPI framework, EDA results, dashboard analysis across all 4 views, 10 key insights, 5 actionable recommendations, impact estimation, limitations, contribution matrix
+- **Presentation:** [`reports/presentation.pdf`](reports/presentation.pdf)
 - **Keywords:** Agricultural Productivity · Yield Gap Analysis · Tableau · Python ETL · Crop Intelligence · India Districts
 
 ---
@@ -468,7 +476,7 @@ This project is licensed under the **MIT License** — see [LICENSE](LICENSE) fo
 <div align="center">
 
 [![Dashboard](https://img.shields.io/badge/🔗_Live_Dashboard-Tableau_Public-E97627?style=for-the-badge)](https://public.tableau.com/app/profile/pushpendra.parihar/viz/Group17_SectionA_Dashboard_Final/1ExecutiveSummary)
-[![Report](https://img.shields.io/badge/📄_Full_Report-LaTeX-008080?style=for-the-badge)](final_report.tex)
+[![Report](https://img.shields.io/badge/📄_Full_Report-PDF-008080?style=for-the-badge)](reports/project_report.pdf)
 [![Last Updated](https://img.shields.io/badge/Last_Updated-April_2026-228B22?style=for-the-badge)]()
 
 **Newton School of Technology · Rishihood University · Sonipat, Haryana**
@@ -476,4 +484,3 @@ This project is licensed under the **MIT License** — see [LICENSE](LICENSE) fo
 [Back to Top](#-india-agricultural-productivity-intelligence)
 
 </div>
-]]>

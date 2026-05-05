@@ -307,7 +307,7 @@ pie title 2019 Production by Season (Million Tonnes)
 
 ## 📈 Impact Estimation
 
-> If all **705 underperforming districts** were brought to the national median yield of **4.10 T/Ha**, the annual production uplift is estimated at **12–18 billion tonnes** nationally — roughly doubling current output.
+> If all **667 underperforming districts** were brought to the national median yield of **4.10 T/Ha**, the annual production uplift is estimated at **12–18 billion tonnes** nationally — roughly doubling current output.
 >
 > Even a conservative **5% improvement** in the top 100 districts by loss potential would generate an estimated **$2–4 billion USD** in additional farm income annually (at prevailing MSP rates).
 

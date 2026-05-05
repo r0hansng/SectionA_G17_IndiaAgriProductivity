@@ -307,7 +307,7 @@ pie title 2019 Production by Season (Million Tonnes)
 
 ## 📈 Impact Estimation
 
-> If all underperforming districts were brought to the national median yield of **4.10 T/Ha**, the annual production uplift is estimated at **12–18 billion tonnes** nationally.
+> If all **705 underperforming districts** were brought to the national median yield of **4.10 T/Ha**, the annual production uplift is estimated at **12–18 billion tonnes** nationally — roughly doubling current output.
 >
 > Even a conservative **5% improvement** in the top 100 districts by loss potential would generate an estimated **$2–4 billion USD** in additional farm income annually (at prevailing MSP rates).
 
@@ -455,6 +455,7 @@ The complete **technical project report** is available as a PDF:
 2. Ministry of Agriculture & Farmers' Welfare, Govt. of India. *Agricultural Statistics at a Glance*, 2022.
 3. NABARD. *Annual Report 2022–23: Priority Sector Lending Overview*, 2023.
 4. Directorate of Economics & Statistics, MoAFW. *Season-wise Crop Production Statistics (APY)*, data.gov.in.
+5. Srinivas A., *Crop Production in India (1997–2015)*, Kaggle. [Link](https://www.kaggle.com/datasets/srinivas1/agriculture-crops-production-in-india)
 
 ---
 

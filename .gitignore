@@ -34,3 +34,12 @@ dist/
 .env
 .env.*
 !.env.example
+
+# LaTeX source & build artifacts
+*.tex
+*.tex.zip
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz

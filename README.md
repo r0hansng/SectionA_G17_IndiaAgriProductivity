@@ -207,7 +207,7 @@ graph LR
 
 6. **667 of 707 districts** fall below the national median yield of **3.87 T/Ha** for at least one crop — indicating systemic underperformance
 
-7. **Hanumangarh** (Rajasthan) carries **17.1M tonnes** of production loss potential — the highest single district
+7. **Sukma** (Chhattisgarh) carries **34.9M tonnes** of production loss potential — the highest single district, driven by Sugarcane and paddy yield gaps in the tribal belt
 
 8. **Sugarcane** accounts for **45.60%** of total production but occupies a disproportionate share of water-stressed regions
 
@@ -259,22 +259,22 @@ graph LR
 </tr>
 </table>
 
-### 🔻 Top Districts by Production Loss Potential (2019)
+### 🔻 Top 30 Districts by Production Loss Potential (2019)
 
 | Rank | District | State | Loss (M Tonnes) |
 |:---:|:---|:---|:---:|
-| 1 | Hanumangarh | Rajasthan | **17.1** |
-| 2 | Ganganagar | Rajasthan | **8.1** |
-| 3 | Anantapur | Andhra Pradesh | **5.5** |
-| 4 | Bikaner | Rajasthan | **5.5** |
-| 5 | Kurnool | Andhra Pradesh | **5.3** |
-| 6 | Murshidabad | West Bengal | **4.5** |
-| 7 | Jind | Haryana | **4.5** |
-| 8 | Hisar | Haryana | **4.1** |
-| 9 | Fatehabad | Haryana | **4.1** |
-| 10 | Kaithal | Haryana | **4.0** |
+| 1 | Sukma | Chhattisgarh | **34.9** |
+| 2 | Dantewada | Chhattisgarh | **17.6** |
+| 3 | Sirsa | Haryana | **15.1** |
+| 4 | Raipur | Chhattisgarh | **13.0** |
+| 5 | Bikaner | Rajasthan | **11.1** |
+| 6 | Bastar | Chhattisgarh | **11.0** |
+| 7 | Kaithal | Haryana | **8.9** |
+| 8 | Churu | Rajasthan | **8.7** |
+| 9 | Kurukshetra | Haryana | **8.4** |
+| 10 | Karnal | Haryana | **7.9** |
 
-> **Key pattern:** Haryana and Rajasthan districts dominate the list, driven by Wheat and oilseed yield gaps in semi-arid zones.
+> **Key pattern:** Chhattisgarh's tribal-belt districts (Sukma, Dantewada, Raipur, Bastar) dominate due to paddy and Sugarcane yield gaps in low-infrastructure zones, while Haryana (Sirsa, Kaithal, Kurukshetra, Karnal) appears due to Wheat yield deficits. **Sukma leads with 34.9M tonnes — nearly double the second-ranked Dantewada (17.6M).**
 
 ---
 
@@ -297,7 +297,7 @@ pie title 2019 Production by Season (Million Tonnes)
 
 | # | Recommendation | Rationale | Expected Impact |
 |:---:|:---|:---|:---|
-| 🎯 **R1** | **Precision Yield Intervention** in top 30 loss districts (starting with Hanumangarh, Ganganagar, Anantapur) | Top 30 districts by Production Loss Potential carry the highest forgone output | 10% yield improvement could recover **billions of tonnes** annually |
+| 🎯 **R1** | **Precision Yield Intervention** in top 30 loss districts (starting with Sukma, Dantewada, Sirsa) | Top 30 districts by Production Loss Potential carry the highest forgone output — Chhattisgarh and Haryana districts dominate | 10% yield improvement in these 30 districts alone could recover **several billion tonnes** of annual production nationally |
 | 💰 **R2** | **Season-Aware Credit Allocation** — front-load NABARD Kharif credit to April–May sowing window | Kharif contributes ~59% of 2019 production (381.5M tonnes) | Contingency drawdown tied to IMD rainfall forecasts |
 | 🌿 **R3** | **Crop Diversification** — shift 10–15% Sugarcane area to Maize/Soyabean in water-deficit districts | Sugarcane: 45.60% of production but high water stress risk | Maize's +50% yield growth over 22 years makes it a viable alternative |
 | 🥥 **R4** | **Coconut Scale-Up** in Tamil Nadu, Kerala, Karnataka | 128.3 T/Ha yield but only 2.82% area share — massive untapped potential | Plantation expansion & supply-chain investment for export-ready production |
